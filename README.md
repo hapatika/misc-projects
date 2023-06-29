@@ -1,2 +1,7 @@
 # miscellaneous-projects
-GSOC Submissions I didn't end up submitting, webscraping, reinforcement learning and other rabbit holes.
+Other rabbit holes.
+-CS231n, 
+-CNN, 
+-webscraping, 
+-Reinforcement Learning
+-RNNs
