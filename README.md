@@ -2,6 +2,6 @@
 Other rabbit holes.
 -CS231n, \
 -CNN, \
--webscraping,\ 
+-webscraping,\
 -Reinforcement Learning, \
 -RNN
