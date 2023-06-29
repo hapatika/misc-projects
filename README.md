@@ -4,4 +4,4 @@ Other rabbit holes.
 -CNN, 
 -webscraping, 
 -Reinforcement Learning
--RNNs
+-RNN
