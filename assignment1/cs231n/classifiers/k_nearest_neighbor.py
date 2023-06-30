@@ -164,8 +164,8 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            
-
+            closest_y = self.y_train[dists[i].argsort()[:k]]
+            # print("closest y = ", closest_y)
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
             # TODO:                                                                 #
@@ -176,7 +176,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
+            y_pred[i] = np.argmax(np.bincount(closest_y))
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
