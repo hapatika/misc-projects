@@ -130,8 +130,22 @@ class KNearestNeighbor(object):
         #       and two broadcast sums.                                         #
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+        x1 = np.expand_dims(np.diagonal(np.dot(X, X.T)), axis = 0).T
+        x2 = np.diagonal(np.dot(self.X_train, self.X_train.T))
+        x3 = 2*(X@self.X_train.T)
+        # x4 = np.sum(np.dot(X, X.T), axis = 1, keepdims = True)
+        dists = np.sqrt(x1 +  x2.reshape((1, x2.shape[0])) - x3)
+        # x5 = np.power(self.X_train, 2).sum(axis=1, keepdims=True).T
+        # dists = np.sum(np.dot(X, X.T), axis = 1, keepdims = True) + np.sum(np.dot(self.X_train, self.X_train.T), axis = 1, keepdims = True) - 2*(X@self.X_train.T)
+        # print("x2 v x5 ", x2[:3], x5[:3])
+        # print(x4.shape)
+        # print(np.equal(x1, x4))
+        # print(x1.shape)
+        # print(x2.shape)
+        # print(x5.shape)
         
-        dists = np.diagonal(np.dot(X, X.T)) + np.diagonal(np.dot(self.X_train, self.X_train.T)) - 2*(X@self.X_train.T)
+
+        #print("brhhuhruh", 2*(X@self.X_train.T)[:20])
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -164,8 +178,8 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            
-
+            closest_y = self.y_train[dists[i].argsort()[:k]]
+            # print("closest y = ", closest_y)
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
             # TODO:                                                                 #
@@ -176,7 +190,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
+            y_pred[i] = np.argmax(np.bincount(closest_y))
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
