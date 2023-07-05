@@ -59,7 +59,7 @@ SAMPLE_MANIFEST = '''
 '''.strip()
 
 # [START slides_simple_text_replace]
-
+'''
 def simple_text_replace(presentation_id, shape_id, replacement_text):
     """
     Run simple_text_replace the user has access to.
@@ -109,7 +109,7 @@ if __name__ == '__main__':
                         'MyTextBox_6',
                         'GWSpace_now')
 
-
+'''
 def main():
     """Calls the Apps Script API.
     """
