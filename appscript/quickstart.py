@@ -32,8 +32,22 @@ from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/script.projects']
 
 SAMPLE_CODE = '''
-function helloWorld() {
-  console.log("Hello, world!");
+function replaceText() {
+  let tr = '{ "我们的基金公司" : "Our Fundhouses", "我们的业务合作伙伴" : "Our Business Partners"}';
+  var trn = JSON.parse(tr);
+  var activeSlide = SlidesApp.getActivePresentation().getActiveSlide();
+  // ID = editor-g22ec9073485_0_579
+  var content = fundHouse.getPageElementById('g22ec9073485_0_579').asShape();
+  var text = content.getText();
+  try{
+    for(var i in trn){
+      console.log("%s", i);
+      text.replaceAllText(i, trn[i]);
+    }
+    console.log("Yurr");
+  } catch(err) {
+    console.log('FAILURE!');
+  }
 }
 '''.strip()
 
